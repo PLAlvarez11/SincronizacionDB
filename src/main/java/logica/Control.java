@@ -30,8 +30,9 @@ public class Control {
     // Método para llamar función crearPersona de PersonaDB y validar datos
     public boolean crearPersona(Persona persona, String tipoDB) {
         //Aquí se puede validar los datos de persona antes de guardar en DB
-        personaDB.crearPersona(persona, tipoDB);
-        return true;
+        boolean valor = personaDB.crearPersona(persona, tipoDB);
+        
+        return valor;
     }
     
     // Método para llamar función actualizarPersona de PersonaDB y validar datos

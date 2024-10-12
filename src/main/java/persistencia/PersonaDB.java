@@ -56,9 +56,20 @@ public class PersonaDB {
     // Método que guarda en DB una persona y guarda en documento
     public boolean crearPersona (Persona persona, String tipoDB){
         try{
+            
             Connection connection = validarConexion(tipoDB);
-            String sql = "INSERT INTO empleado (dpi, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono_casa, telefono_movil, salario_base, bonificacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "SELECT * FROM empleado WHERE dpi = ?";
+            
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, persona.getDpi());
+            
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                return false;
+            }
+            
+             sql = "INSERT INTO empleado (dpi, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono_casa, telefono_movil, salario_base, bonificacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+             ps = connection.prepareStatement(sql);
             
             ps.setInt(1, persona.getDpi());
             ps.setString(2, persona.getNombre1());
@@ -94,8 +105,10 @@ public class PersonaDB {
     // Método que actualiza en DB una persona y guarda en documento
     public boolean atualizarPersona (Persona persona, String tipoDB){
        try {
+           System.out.println(persona.toString());
+           
             Connection connection = validarConexion(tipoDB);
-            String sql = "SELECT * empleado WHERE dpi = ?";
+            String sql = "SELECT * FROM empleado WHERE dpi = ?";
             
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, persona.getDpi());
@@ -119,7 +132,7 @@ public class PersonaDB {
             }
             
             String texto;
-            
+            System.out.println(personaOriginal.toString());
            if (!personaOriginal.getNombre1().equals(persona.getNombre1())) {
               try{
                     sql = "UPDATE empleado SET primer_nombre = ? WHERE dpi = ?";
@@ -365,8 +378,9 @@ public class PersonaDB {
                         break;
                     case "UPDATE":
                         query = "UPDATE empleado ";
-                        query += "SET " + valor1 + " = " + valor2;
+                        query += "SET " + valor1 + " = '" + valor2+"'";
                         query += " WHERE dpi = " + id;
+
                         break;
                     case "DELETE":
                         query = "DELETE FROM empleado ";

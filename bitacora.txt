@@ -19,3 +19,25 @@
 0|PostgreSQL|INSERT|VALUES(4454, 'b', 'b', 'b', 'b', 'b', '78', '45', 8000, 500) | 2024-10-12 00:24:46
 0|MySQL|INSERT|VALUES(45654, 'c', 'c', 'c', 'c', 'c', '78', '1', 1000, 700) | 2024-10-12 00:27:53
 0|PostgreSQL|INSERT|VALUES(12121, 'd', 'd', 'd', 'd', 'd', '7887', '12', 100, 10) | 2024-10-12 00:28:40
+0|MySQL|UPDATE|primer_nombre|F|12121 | 2024-10-12 01:24:09
+0|MySQL|UPDATE|segundo_nombre|F|12121 | 2024-10-12 01:24:09
+0|MySQL|UPDATE|primer_apellido|F|12121 | 2024-10-12 01:24:09
+0|MySQL|UPDATE|segundo_apellido|F|12121 | 2024-10-12 01:24:09
+0|PostgreSQL|UPDATE|segundo_apellido|Torres|4454 | 2024-10-12 01:28:53
+0|MySQL|UPDATE|primer_apellido|Gomez|4454 | 2024-10-12 01:29:15
+0|MySQL|UPDATE|segundo_apellido|Ruiz|45654 | 2024-10-12 01:29:43
+0|PostgreSQL|UPDATE|segundo_apellido|Pescado|45654 | 2024-10-12 01:30:17
+0|PostgreSQL|UPDATE|salario_base|4000|4454 | 2024-10-12 01:31:05
+0|PostgreSQL|UPDATE|bonificacion|250|4454 | 2024-10-12 01:31:05
+0|MySQL|UPDATE|primer_nombre|nom5|111 | 2024-10-12 01:32:30
+0|MySQL|UPDATE|bonificacion|100|111 | 2024-10-12 01:32:30
+0|MySQL|INSERT|VALUES(456465, 'Prueba', 'Prueba', 'Prueba', 'Prueba', 'Dire', '12315', '78545', 1200, 411) | 2024-10-12 01:43:44
+0|MySQL|UPDATE|primer_nombre|Nom6|12121 | 2024-10-12 01:50:50
+0|MySQL|UPDATE|segundo_nombre|FNom6|12121 | 2024-10-12 01:50:50
+0|MySQL|UPDATE|primer_apellido|FNom6|12121 | 2024-10-12 01:50:50
+0|MySQL|UPDATE|segundo_apellido|FNom6|12121 | 2024-10-12 01:50:50
+0|MySQL|UPDATE|direccion|dNom6|12121 | 2024-10-12 01:50:50
+0|MySQL|UPDATE|telefono_casa|788744|12121 | 2024-10-12 01:50:50
+0|MySQL|UPDATE|telefono_movil|1244|12121 | 2024-10-12 01:50:50
+0|PostgreSQL|INSERT|VALUES(74747417, 'Nom3', 'No,6', 'a', 'a', 'a', '789a', 'aa', 4100, 780) | 2024-10-12 01:51:29
+0|MySQL|DELETE|123 | 2024-10-12 01:51:55

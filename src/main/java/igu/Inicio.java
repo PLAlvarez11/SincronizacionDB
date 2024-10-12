@@ -265,7 +265,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        
+        this.esEdicion = true;
         // Obtener la fila seleccionada en la tabla
         int selectedRow = tblDatos.getSelectedRow();
 
@@ -326,8 +326,14 @@ public class Inicio extends javax.swing.JFrame {
                 control.actualizarPersona(personaEditada, tipoDB);
                 javax.swing.JOptionPane.showMessageDialog(this, "Los cambios han sido guardados exitosamente.");
             } else {
-                control.crearPersona(personaEditada, tipoDB);
-                javax.swing.JOptionPane.showMessageDialog(this, "La nueva persona ha sido creada exitosamente.");
+                Boolean valor = control.crearPersona(personaEditada, tipoDB);
+               
+                if(valor){
+                    javax.swing.JOptionPane.showMessageDialog(this, "La nueva persona ha sido creada exitosamente.");
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "El DPI ya existe.");
+                }
+                
             }
 
             // Deshabilitar la edición
@@ -518,7 +524,8 @@ public class Inicio extends javax.swing.JFrame {
             @Override
             public boolean isCellEditable(int row, int column) {
                 // Permitir la edición solo en la fila seleccionada
-                return row == fila;
+                //return row == fila;
+                return column != 0;
             }
         });
 
