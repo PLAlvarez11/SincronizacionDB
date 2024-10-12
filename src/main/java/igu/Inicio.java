@@ -305,7 +305,11 @@ public class Inicio extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos de texto.", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-
+                
+            if(String.valueOf(personaEditada.getDpi()).length() > 9 ) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Creación de DPI invalido", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             // Verificar si los campos numéricos son válidos
             if ("".equals(personaEditada.getTelefonoDomicilio()) || "".equals(personaEditada.getTelefonoMovil())) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar números válidos para los teléfonos.", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
