@@ -30,6 +30,7 @@ public class PersonaDB {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
+            //Recorremos el result set para crear los objetos persona
             while (resultSet.next()) {
                 
                 Persona persona = new Persona(
@@ -44,6 +45,7 @@ public class PersonaDB {
                     resultSet.getBigDecimal("salario_base"),// salarioBase
                     resultSet.getBigDecimal("bonificacion") // bonificacion
                 );
+                //Agregamos el objeto a la lista para la tabla
                 listaPersonas.add(persona);
             }
         } catch (Exception e) {
@@ -56,21 +58,28 @@ public class PersonaDB {
     // Método que guarda en DB una persona y guarda en documento
     public boolean crearPersona (Persona persona, String tipoDB){
         try{
-            
+            //Validamos la conexion
             Connection connection = validarConexion(tipoDB);
+            
+            //Creamos el script SQL para validar si el registro a insertar ya existe
             String sql = "SELECT * FROM empleado WHERE dpi = ?";
             
+            //Metemos los parametros del script
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, persona.getDpi());
             
+            //Ejecutamos la consulta
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
+                //Si, si exite devuelve false para que no inserte el dato
                 return false;
             }
             
+            //Creamos el script SQL para insertar
              sql = "INSERT INTO empleado (dpi, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, telefono_casa, telefono_movil, salario_base, bonificacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
              ps = connection.prepareStatement(sql);
             
+             //Metemos los parametros del script
             ps.setInt(1, persona.getDpi());
             ps.setString(2, persona.getNombre1());
             ps.setString(3, persona.getNombre2());
@@ -82,11 +91,15 @@ public class PersonaDB {
             ps.setBigDecimal(9, persona.getSalarioBase());
             ps.setBigDecimal(10, persona.getBonificacion());
             
+            //Creamos el string para ser insertado en la bitacora
             String texto = "1|"+ tipoDB +"|INSERT|VALUES("+ persona.getDpi() +", '"+ persona.getNombre1() +"', '"+ persona.getNombre2() +"', '"+ persona.getApellido1() +"', '"+ persona.getApellido2() +"', '"+ persona.getDireccionDomicilio() +"', '"+ persona.getTelefonoDomicilio() +"', '"+ persona.getTelefonoMovil() +"', "+ persona.getSalarioBase() +", "+ persona.getBonificacion() +")";
             
+            //Ejecutamos la consulta y validamos si inserto datos
             int filasInsertadas = ps.executeUpdate();
             if (filasInsertadas > 0) {
                 System.out.println("¡Inserción exitosa!");
+                
+                //Al momento de ser exitoso guardemos en bitacora
                 agregarTransaccion(texto);
             }
             
@@ -105,16 +118,19 @@ public class PersonaDB {
     // Método que actualiza en DB una persona y guarda en documento
     public boolean atualizarPersona (Persona persona, String tipoDB){
        try {
-           System.out.println(persona.toString());
-           
+           //Validamos la conexion
             Connection connection = validarConexion(tipoDB);
+            
+            //Creamos el script SQL para obtner el regisro original
             String sql = "SELECT * FROM empleado WHERE dpi = ?";
             
+            //Ejecutamos la consulta
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, persona.getDpi());
 
             ResultSet resultSet = ps.executeQuery();
             
+            //Metemos a un objeto el result set con los datos del registro original
             Persona personaOriginal = new Persona();
             while (resultSet.next()) {
                 personaOriginal = new Persona(
