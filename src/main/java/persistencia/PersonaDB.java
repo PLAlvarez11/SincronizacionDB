@@ -148,18 +148,22 @@ public class PersonaDB {
             }
             
             String texto;
-            System.out.println(personaOriginal.toString());
+           //Validamos si el nombre original es diferente al nombre insertado
            if (!personaOriginal.getNombre1().equals(persona.getNombre1())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET primer_nombre = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setString(1, persona.getNombre1());
                     ps.setInt(2, persona.getDpi());
                     
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|primer_nombre|"+ persona.getNombre1() +"|"+ persona.getDpi();
                     
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -169,17 +173,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+           
+           //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getNombre2().equals(persona.getNombre2())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET segundo_nombre = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setString(1, persona.getNombre2());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|segundo_nombre|"+ persona.getNombre2() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -189,17 +199,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+            
+            //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getApellido1().equals(persona.getApellido1())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET primer_apellido = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setString(1, persona.getApellido1());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|primer_apellido|"+ persona.getApellido1() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -209,17 +225,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+            
+            //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getApellido2().equals(persona.getApellido2())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET segundo_apellido = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setString(1, persona.getApellido2());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|segundo_apellido|"+ persona.getApellido2() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -229,17 +251,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+            
+            //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getDireccionDomicilio().equals(persona.getDireccionDomicilio())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET direccion = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setString(1, persona.getDireccionDomicilio());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|direccion|"+ persona.getDireccionDomicilio() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -249,17 +277,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+            
+            //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getTelefonoDomicilio().equals(persona.getTelefonoDomicilio())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET telefono_casa = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setString(1, persona.getTelefonoDomicilio());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|telefono_casa|"+ persona.getTelefonoDomicilio() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -269,17 +303,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+            
+            //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getTelefonoMovil().equals(persona.getTelefonoMovil())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET telefono_movil = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setString(1, persona.getTelefonoMovil());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|telefono_movil|"+ persona.getTelefonoMovil() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -289,17 +329,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+            
+            //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getSalarioBase().equals(persona.getSalarioBase())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET salario_base = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setBigDecimal(1, persona.getSalarioBase());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|salario_base|"+ persona.getSalarioBase() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -309,17 +355,23 @@ public class PersonaDB {
                   e.printStackTrace();
               }
             }
+            
+            //Validamos si el dato original es diferente al dato insertado
             if (!personaOriginal.getBonificacion().equals(persona.getBonificacion())) {
               try{
+                  //Se crear el script SQL y sus parametos 
                     sql = "UPDATE empleado SET bonificacion = ? WHERE dpi = ?";
                     ps = connection.prepareStatement(sql);
                     ps.setBigDecimal(1, persona.getBonificacion());
                     ps.setInt(2, persona.getDpi());
 
+                    //Se crea la cadena para ls bitacora
                     texto = "1|"+ tipoDB +"|UPDATE|bonificacion|"+ persona.getBonificacion() +"|"+ persona.getDpi();
 
+                    //Ejecutamos la consulta y validamos si inserto datos
                     int filasActualizadas = ps.executeUpdate();
                     if (filasActualizadas > 0) {
+                        //Al momento de ser exitoso guardemos en bitacora
                         agregarTransaccion(texto);
                         System.out.println("¡Actualización exitosa!");
                     } else {
@@ -339,14 +391,19 @@ public class PersonaDB {
     // Método que elimina en DB una persona y guarda en documento
     public boolean eliminarPersona (Persona persona, String tipoDB){
         try {
+            //Validamos y creamos la conexion
             Connection connection = validarConexion(tipoDB);
-            String sql = "DELETE FROM empleado WHERE dpi = ?";
             
+            //Se crea el script y sus parametos
+            String sql = "DELETE FROM empleado WHERE dpi = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, persona.getDpi());
 
+            //Se ejecuta la eliminación
             int filasEliminadas = ps.executeUpdate();
             if (filasEliminadas > 0) {
+                
+                //Se crea la cadena que se guardara en la bitacora 
                 String texto = "1|"+ tipoDB +"|DELETE|" + persona.getDpi();
                 agregarTransaccion(texto);
                 
@@ -363,30 +420,42 @@ public class PersonaDB {
     // Método que sincroniza las 2 DB y guarda en documento los cambios
     public boolean sincronizar2DB (List<Persona> personas){
         int linea = 0;
+        
+        //Se leen todas las trasnacciones en la bitacora
         List<String> transacciones = leerTransacciones();
         // Recorre las transacciones
         for (String transaccion : transacciones) {
+            
+            //Solo vamos a obetener que inicien con 1, es decir las transacciones que no han sido sincronizadas
             if (transaccion.startsWith("1")) {
-                //System.out.println(transaccion);
+                //Metemos dento de un arreglo separdo por el simbolo "|" 
                 String[] arreglo = transaccion.split("\\|");
                 String tipo = "", valor1 = "", valor2 = "", fecha = "", query = "", id="";
                 
-                for (int i = 0; i < arreglo.length; i++) {    
+                //Recorremos el arreglo
+                for (int i = 0; i < arreglo.length; i++) {
                     if ( i == 2){
+                        //Si vamos por la vuelta 2, este será el tipo de transaccion
                         tipo = arreglo[i];
                     }else if (tipo.equals("DELETE") && i == 3){
+                        //Si vamos por la vuelta 3 y el tipo de transacciones es DELETE, obtenderemos el id a eliminar
                         id =  arreglo[i];
                     }else if (i == 3){
+                        //Si vamos por la vuelta e, este será el valor de insercion o el valor a editar
                         valor1 = arreglo[i];
                     }else if (tipo.equals("UPDATE") && i == 4){
+                        //Si vamos por la vuelta 4 y es un update el tipo de transaccion. este sera el valor a insetar 
                         valor2 =  arreglo[i];
                     }else if (tipo.equals("UPDATE") && i == 5){
+                        //Si vamos por la vuelta 5, este sera el id de la transaccion
                         id =  arreglo[i];
                     }else if (i == 4){
+                        //esta sera la fecha de ingreso
                         fecha =  arreglo[i];
                     }
                 }
                 
+                //Dependiendo el tipo de transaccion asi vamos a construir el query para su sincronizacion
                 switch (tipo) {
                     case "INSERT":
                         query = "INSERT INTO empleado ";
@@ -406,6 +475,7 @@ public class PersonaDB {
                         break;
                 }
                 
+                //Realizamos la conexion y ejecutamos el query construido en Postgre
                 try {
                     Connection connectionPostgre = validarConexion("PostgreSQL");
                     PreparedStatement psPostgre = connectionPostgre.prepareStatement(query);
@@ -420,6 +490,7 @@ public class PersonaDB {
                     }
                 }
                 
+                //Realizamos la conexion y ejecutamos el query construido en MySQL
                 try {
                     Connection connectioMySQL = validarConexion("MySQL");
                     PreparedStatement psMySQL = connectioMySQL.prepareStatement(query);
@@ -434,6 +505,7 @@ public class PersonaDB {
                     }
                 }
                 
+                //Una vez la sincronizacion realizada, le cambiamos el estado a 0 (que ya fue sincronizaso)
                 editarTransaccion(linea, validarTraslado(transaccion, '0'));
             }
             linea++;
@@ -442,6 +514,7 @@ public class PersonaDB {
     }    
     
     public Connection validarConexion(String DB) throws SQLException{
+        //Valida a que conexion nos debemos conectar
         if(DB.equals("PostgreSQL")){
             return ConectorPostgre.getConnection();
         }else{
@@ -450,6 +523,7 @@ public class PersonaDB {
     }
     
     public static void agregarTransaccion(String transaccion) {
+        //Agrega a la bitacora que transacccion se realizo, junto a su hora
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter("bitacora.txt", true))) {
             // Obtener la fecha y hora actuales para el registro
             String fechaHora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -464,6 +538,7 @@ public class PersonaDB {
     }
     
     public static List<String> leerTransacciones() {
+        //Obtene en una lista todas las transacciones guardadas en la bitacora
         List<String> transacciones = new ArrayList<>();
 
         try (BufferedReader lector = new BufferedReader(new FileReader("bitacora.txt"))) {
@@ -479,6 +554,7 @@ public class PersonaDB {
     }
     
     public static void editarTransaccion(int indice, String nuevaTransaccion) {
+        //Es nuestro metodo para editar las transacciones que ya fueron sincrizadas
         List<String> transacciones = leerTransacciones();
 
         if (indice >= 0 && indice < transacciones.size()) {
